@@ -22,12 +22,12 @@ public class ClientDTO {
     }
 
     public ClientDTO(Client entity) {
-        id = id;
-        name = name;
-        cpf = cpf;
-        income = income;
-        birthDate = birthDate;
-        children = children;
+        id = entity.getId();
+        name = entity.getName();
+        cpf = entity.getCpf();
+        income = entity.getIncome();
+        birthDate = entity.getBirthDate();
+        children = entity.getChildren();
     }
 
 

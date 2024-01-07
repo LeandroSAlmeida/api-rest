@@ -1,5 +1,6 @@
 package com.springlearning.api.controllers;
 
+import com.springlearning.api.domain.Client;
 import com.springlearning.api.dto.ClientDTO;
 import com.springlearning.api.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class ClientController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
+    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto){
+        dto = service.update(id, dto);
+        return ResponseEntity.ok(dto);
     }
 
 }

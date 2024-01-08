@@ -1,15 +1,22 @@
 package com.springlearning.api.dto;
 
 import com.springlearning.api.domain.Client;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
     private Long id;
+    @Size(min = 3, max = 80, message = "Nome precisa ter de 3 a 80 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String name;
     private String cpf;
+    @Positive(message = "O preço deve ser positivo")
     private Double income;
+    @PastOrPresent(message = "A data deve ser anterior a data atual")
     private LocalDate birthDate;
+    @Min(value = 0, message = "Por favor, insira um número inteiro válido")
+    @Max(value = Integer.MAX_VALUE, message = "Por favor, insira um número inteiro válido")
     private Integer children;
 
     public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {

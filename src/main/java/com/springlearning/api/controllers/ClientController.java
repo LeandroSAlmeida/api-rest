@@ -1,6 +1,5 @@
 package com.springlearning.api.controllers;
 
-import com.springlearning.api.domain.Client;
 import com.springlearning.api.dto.ClientDTO;
 import com.springlearning.api.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +37,11 @@ public class ClientController {
     public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto){
         dto = service.update(id, dto);
         return ResponseEntity.ok(dto);
+    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<ClientDTO> delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
